@@ -22,9 +22,12 @@ class ScrollableImageBanner extends StatelessWidget {
           return SizedBox(
             width: width,
             height: height,
-            child: Image.network(
-              imageUrls[index],
-              fit: BoxFit.fill,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.network(
+                imageUrls[index],
+                fit: BoxFit.fill,
+              ),
             ),
           );
         },
