@@ -21,37 +21,38 @@ class CategoryList extends StatelessWidget {
           padding: const EdgeInsets.only(top: 8.0),
           child: SizedBox(
             width: double.maxFinite,
-            height: 100,
+            height: 90,
             child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: itemCategories.length,
-                itemBuilder: (ctx, index) {
-                  final item = itemCategories[index];
-                  return Column(
-                    children: [
-                      CircleAvatar(
-                        maxRadius: 24,
-                        backgroundImage: NetworkImage(item.imageUrl),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 4.0),
-                        child: SizedBox(
-                          width: 90,
-                          child: Text(
-                            item.title,
-                            maxLines: 2,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
+              scrollDirection: Axis.horizontal,
+              itemCount: itemCategories.length,
+              itemBuilder: (ctx, index) {
+                final item = itemCategories[index];
+                return Column(
+                  children: [
+                    CircleAvatar(
+                      maxRadius: 24,
+                      backgroundImage: NetworkImage(item.imageUrl),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 4.0),
+                      child: SizedBox(
+                        width: 80,
+                        child: Text(
+                          item.title,
+                          maxLines: 2,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
                           ),
                         ),
                       ),
-                    ],
-                  );
-                }),
+                    ),
+                  ],
+                );
+              },
+            ),
           ),
         )
       ],

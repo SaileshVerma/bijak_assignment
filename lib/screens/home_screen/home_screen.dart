@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:bijak_assignment/screens/home_screen/widgets/home_screen_appbar.dart';
+import 'package:bijak_assignment/screens/home_screen/widgets/recent_orders_list.dart';
+import 'package:bijak_assignment/screens/home_screen/widgets/seasonal_products_list.dart';
 import 'package:bijak_assignment/screens/home_screen/widgets/category_list.dart';
 import 'package:bijak_assignment/screens/home_screen/widgets/scrollable_image_banner_carousel.dart';
 import 'package:bijak_assignment/screens/home_screen/widgets/search_field.dart';
@@ -11,56 +14,12 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            CircleAvatar(
-              maxRadius: 16,
-              backgroundColor: Colors.grey,
-              child: CircleAvatar(
-                maxRadius: 14,
-                backgroundColor: Colors.white,
-                child: IconButton(
-                  padding: EdgeInsets.zero,
-                  constraints: const BoxConstraints(),
-                  style: const ButtonStyle(
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  ),
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.person,
-                    color: Colors.green,
-                  ),
-                ),
-              ),
-            ),
-            const Text(
-              'Bijak',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            IconButton(
-              padding: EdgeInsets.zero,
-              constraints: const BoxConstraints(),
-              style: const ButtonStyle(
-                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              ),
-              onPressed: () {},
-              icon: const Icon(
-                Icons.logout,
-                color: Colors.white,
-              ),
-            ),
-          ],
-        ),
+        title: HomeScreenAppBar(),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Padding(
+      body: ListView(
+        // crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          Padding(
             padding: EdgeInsets.only(top: 16.0, right: 16.0, left: 16.0),
             child: SearchField(),
           ),
@@ -71,6 +30,14 @@ class HomeScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(top: 16.0, right: 16.0, left: 16.0),
             child: CategoryList(),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 16.0, right: 16.0, left: 16.0),
+            child: RecentOrdersList(),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 16.0, right: 16.0, left: 16.0),
+            child: SeasonalProductsList(),
           ),
         ],
       ),
