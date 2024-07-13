@@ -18,7 +18,14 @@ class SeasonalProductCard extends StatelessWidget {
       surfaceTintColor: Colors.white,
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, Routes.product, arguments: product.id);
+          Navigator.pushNamed(
+            context,
+            Routes.product,
+            arguments: {
+              'id': product.id,
+              'name': product.name,
+            },
+          );
         },
         child: Stack(
           // alignment: Alignment.center,

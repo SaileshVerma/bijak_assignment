@@ -44,7 +44,29 @@ class HomeScreenAppBar extends StatelessWidget {
           style: const ButtonStyle(
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
-          onPressed: () {},
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (ctx) {
+                  return AlertDialog(
+                    surfaceTintColor: Colors.white,
+                    title: const Text('Logout User'),
+                    content: const Text('Are you sure you want to logout?'),
+                    actions: [
+                      TextButton(
+                        onPressed: () {},
+                        child: const Text('Logout'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text('Cancel'),
+                      )
+                    ],
+                  );
+                });
+          },
           icon: const Icon(
             Icons.logout,
             color: Colors.white,

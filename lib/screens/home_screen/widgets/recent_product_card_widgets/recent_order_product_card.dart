@@ -20,7 +20,14 @@ class RecentOrderProductCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(6.0),
         splashColor: Colors.transparent,
         onTap: () {
-          Navigator.pushNamed(context, Routes.product, arguments: product.id);
+          Navigator.pushNamed(
+            context,
+            Routes.product,
+            arguments: {
+              'id': product.id,
+              'name': product.name,
+            },
+          );
         },
         child: Ink(
           child: Stack(

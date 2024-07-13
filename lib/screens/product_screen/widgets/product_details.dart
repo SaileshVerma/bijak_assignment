@@ -21,7 +21,7 @@ class ProductDetails extends StatelessWidget {
           child: Text(
             product.name,
             maxLines: 1,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 12,
               color: Colors.black,
             ),

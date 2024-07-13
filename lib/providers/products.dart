@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:bijak_assignment/controllers/products_controller.dart';
 import 'package:bijak_assignment/models/product.dart';
 import 'package:bijak_assignment/providers/cart_products.dart';
+import 'package:bijak_assignment/providers/product_details.dart';
+import 'package:bijak_assignment/providers/recently_orders.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProductsNotifier extends AsyncNotifier<List<Product>> {
@@ -46,6 +48,12 @@ class ProductsNotifier extends AsyncNotifier<List<Product>> {
 
       final itemIndex =
           currentList.indexWhere((element) => element.id == productItem.id);
+      ref
+          .read(recentlyOrdersProvider.notifier)
+          .increaseQtyByOne(productId: product.id);
+      ref
+          .read(productDetailProvider(productItem.id).notifier)
+          .increaseQtyByOne();
 
       currentList[itemIndex] = productItem;
     } else {
@@ -70,6 +78,12 @@ class ProductsNotifier extends AsyncNotifier<List<Product>> {
       final itemIndex =
           currentList.indexWhere((element) => element.id == productItem.id);
       currentList[itemIndex] = productItem;
+      ref
+          .read(recentlyOrdersProvider.notifier)
+          .decreaseQtyByOne(productId: product.id);
+      ref
+          .read(productDetailProvider(productItem.id).notifier)
+          .decreaseQtyByOne();
     } else {
       currentList.add(product);
     }
@@ -77,6 +91,59 @@ class ProductsNotifier extends AsyncNotifier<List<Product>> {
     ref
         .read(cartProductsProvider.notifier)
         .removeProductFromCart(product: product);
+    state = AsyncData(currentList);
+  }
+
+  void increaseQtyByOne({required String productId}) {
+    final currentList = state.asData?.value ?? [];
+
+    final product = currentList.firstWhere(
+      (element) => element.id == productId,
+      orElse: () {
+        return Product.empty;
+      },
+    );
+
+    if (product.id.isEmpty) {
+      return;
+    }
+
+    final previousQty = product.qty;
+    final Product productItem = product.copyWith(
+      qty: previousQty + 1,
+    );
+    final itemIndex =
+        currentList.indexWhere((element) => element.id == productItem.id);
+    currentList[itemIndex] = productItem;
+
+    state = AsyncData(currentList);
+  }
+
+  void decreaseQtyByOne({required String productId}) {
+    final currentList = state.asData?.value ?? [];
+
+    final product = currentList.firstWhere(
+      (element) => element.id == productId,
+      orElse: () {
+        return Product.empty;
+      },
+    );
+
+    if (product.id.isEmpty) {
+      return;
+    }
+
+    final previousQty = product.qty;
+    if (previousQty == 0) {
+      return;
+    }
+    final Product productItem = product.copyWith(
+      qty: previousQty - 1,
+    );
+    final itemIndex =
+        currentList.indexWhere((element) => element.id == productItem.id);
+    currentList[itemIndex] = productItem;
+
     state = AsyncData(currentList);
   }
 

@@ -10,6 +10,7 @@ class SearchField extends StatelessWidget {
     return TextField(
       cursorColor: Colors.black,
       decoration: InputDecoration(
+        suffixIcon: const Icon(Icons.search),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
           borderSide: const BorderSide(color: Colors.black, width: 1.0),

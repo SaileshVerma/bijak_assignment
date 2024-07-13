@@ -1,4 +1,5 @@
 import 'package:bijak_assignment/providers/product_details.dart';
+import 'package:bijak_assignment/screens/product_screen/widgets/add_product_action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:bijak_assignment/app_widgets/custom_floated_bottom_widget.dart';
 import 'package:bijak_assignment/screens/product_screen/widgets/product_details.dart';
@@ -7,9 +8,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProductScreen extends ConsumerWidget {
   final String productId;
+  final String name;
 
   const ProductScreen({
     required this.productId,
+    required this.name,
     super.key,
   });
 
@@ -25,9 +28,9 @@ class ProductScreen extends ConsumerWidget {
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Colors.green,
-        title: const Text(
-          'Product Name',
-          style: TextStyle(
+        title: Text(
+          name,
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 16,
             fontWeight: FontWeight.bold,
@@ -67,6 +70,9 @@ class ProductScreen extends ConsumerWidget {
                         product: productItem,
                       ),
                     ),
+                    AddProductToCartActionButton(
+                      productItem: productItem,
+                    )
                     // SeasonalAddToCartActionButton(
                     //   toShowAddButton: false,
                     // )
