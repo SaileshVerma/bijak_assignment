@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class HomeScreenAppBar extends StatelessWidget {
+  final GlobalKey<ScaffoldState> scaffoldKey;
+
   const HomeScreenAppBar({
+    required this.scaffoldKey,
     super.key,
   });
 
@@ -22,7 +25,9 @@ class HomeScreenAppBar extends StatelessWidget {
               style: const ButtonStyle(
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               ),
-              onPressed: () {},
+              onPressed: () {
+                scaffoldKey.currentState?.openDrawer();
+              },
               icon: const Icon(
                 Icons.person,
                 color: Colors.green,

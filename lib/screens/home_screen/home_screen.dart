@@ -1,3 +1,4 @@
+import 'package:bijak_assignment/app_widgets/home_screen_drawer.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
@@ -15,11 +16,18 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+
     return Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.green,
-        title: const HomeScreenAppBar(),
+        title: HomeScreenAppBar(
+          scaffoldKey: scaffoldKey,
+        ),
       ),
+      drawer: const HomeDrawer(),
       body: Padding(
         padding: EdgeInsets.only(
           bottom: ref.watch(cartProductsProvider).isNotEmpty ? 80.0 : 10.0,

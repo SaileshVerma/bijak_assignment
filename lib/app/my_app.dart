@@ -1,5 +1,5 @@
-import 'package:bijak_assignment/screens/product_screen/product_screen.dart';
 import 'package:flutter/material.dart';
+
 import 'package:bijak_assignment/utils/routes/app_routes.dart';
 import 'package:bijak_assignment/utils/themes/themes.dart';
 import 'package:bijak_assignment/screens/home_screen/home_screen.dart';

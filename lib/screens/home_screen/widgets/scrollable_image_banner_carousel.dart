@@ -1,5 +1,5 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:bijak_assignment/utils/constant/carousel_banner_images.dart';
 
@@ -20,9 +20,10 @@ class ScrollableImageBanner extends StatelessWidget {
         ),
         itemCount: imageUrls.length,
         itemBuilder: (context, index, realIndex) {
-          return SizedBox(
+          return Container(
             width: width,
             height: height,
+            color: Colors.grey.shade100,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: Image.network(
