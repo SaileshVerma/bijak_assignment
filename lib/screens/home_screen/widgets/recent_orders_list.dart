@@ -1,6 +1,7 @@
 import 'package:bijak_assignment/providers/products.dart';
 import 'package:bijak_assignment/providers/recently_orders.dart';
 import 'package:bijak_assignment/screens/home_screen/widgets/recent_product_card_widgets/recent_order_product_card.dart';
+import 'package:bijak_assignment/screens/home_screen/widgets/recent_product_card_widgets/recently_ordered_loading_shimmer.dart';
 import 'package:bijak_assignment/utils/constant/sample_product_list_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -42,7 +43,7 @@ class RecentOrdersList extends ConsumerWidget {
                   });
             },
             error: (error, _) => Text('$error'),
-            loading: () => const CircularProgressIndicator(),
+            loading: () => const RecentlyOrderShimmerLoader(),
           ),
         )
       ],

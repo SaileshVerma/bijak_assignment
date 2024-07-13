@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 class ProductImage extends StatelessWidget {
   const ProductImage({
-    super.key,
     required this.width,
     required this.height,
+    required this.imageUrl,
+    super.key,
   });
 
+  final String imageUrl;
   final double width;
   final double height;
 
@@ -17,7 +19,7 @@ class ProductImage extends StatelessWidget {
       width: width,
       height: height,
       child: Image.network(
-        'https://d1hm90tax3m3th.cloudfront.net/web/vegetables.jpg',
+        imageUrl,
         fit: BoxFit.cover,
       ),
     );

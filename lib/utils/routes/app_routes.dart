@@ -14,7 +14,10 @@ class AppRoutes {
         break;
 
       case (Routes.product):
-        page = const ProductScreen();
+        final args = settings.arguments as String;
+        page = ProductScreen(
+          productId: args,
+        );
         break;
 
       default:

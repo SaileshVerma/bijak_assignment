@@ -1,7 +1,11 @@
+import 'package:bijak_assignment/models/product.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetails extends StatelessWidget {
+  final Product product;
+
   const ProductDetails({
+    required this.product,
     super.key,
   });
 
@@ -15,7 +19,7 @@ class ProductDetails extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: Text(
-            'Product Name',
+            product.name,
             maxLines: 1,
             style: TextStyle(
               fontSize: 12,
@@ -26,9 +30,9 @@ class ProductDetails extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 4.0),
           child: Text(
-            'Product Weight',
+            product.weight,
             maxLines: 1,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 10,
               color: Colors.grey,
             ),
@@ -37,9 +41,9 @@ class ProductDetails extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 4.0),
           child: Text(
-            'Product PRice',
+            '${product.currencyUnit} ${product.price}',
             maxLines: 1,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 10,
               color: Colors.grey,
             ),
@@ -50,10 +54,10 @@ class ProductDetails extends StatelessWidget {
           child: SizedBox(
             width: width * 0.5,
             child: Text(
-              'Product DESCd ds sd sd s ds  sd s ds d sd s ds ds d sd s ds s d d s ds s  dsd sd das ds dsd sd s sd sd   ',
+              product.description,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 10,
                 color: Colors.grey,
               ),

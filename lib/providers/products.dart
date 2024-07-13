@@ -38,6 +38,7 @@ class ProductsNotifier extends AsyncNotifier<List<Product>> {
 
     if (didProductAlreadyExists(productId: product.id)) {
       //since the product] exists will add qty by +1;
+
       final previousQty = product.qty;
       final Product productItem = product.copyWith(
         qty: previousQty + 1,

@@ -1,17 +1,25 @@
-import 'package:bijak_assignment/screens/home_screen/widgets/seasonal_product_card_widgets/add_product_cart_action_button.dart';
+import 'package:bijak_assignment/providers/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:bijak_assignment/app_widgets/custom_floated_bottom_widget.dart';
 import 'package:bijak_assignment/screens/product_screen/widgets/product_details.dart';
 import 'package:bijak_assignment/screens/product_screen/widgets/product_image.dart';
-import 'package:bijak_assignment/screens/home_screen/widgets/seasonal_product_card_widgets/seasonal_product_card.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ProductScreen extends StatelessWidget {
-  const ProductScreen({super.key});
+class ProductScreen extends ConsumerWidget {
+  final String productId;
+
+  const ProductScreen({
+    required this.productId,
+    super.key,
+  });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final double width = MediaQuery.of(context).size.width;
     final double height = (width * 3 * 0.9) / 2;
+
+    final productDetailNotifierProvider =
+        ref.watch(productDetailProvider(productId));
 
     return Scaffold(
       appBar: AppBar(
@@ -27,7 +35,9 @@ class ProductScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
             icon: const Icon(
               Icons.home,
               color: Colors.white,
@@ -35,29 +45,39 @@ class ProductScreen extends StatelessWidget {
           )
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ProductImage(
-            width: width,
-            height: height,
-          ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 8.0),
-                  child: ProductDetails(),
+      body: productDetailNotifierProvider.when(
+        data: (data) {
+          final productItem = data;
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ProductImage(
+                width: width,
+                imageUrl: productItem.imageUrl,
+                height: height,
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: ProductDetails(
+                        product: productItem,
+                      ),
+                    ),
+                    // SeasonalAddToCartActionButton(
+                    //   toShowAddButton: false,
+                    // )
+                  ],
                 ),
-                // SeasonalAddToCartActionButton(
-                //   toShowAddButton: false,
-                // )
-              ],
-            ),
-          ),
-        ],
+              ),
+            ],
+          );
+        },
+        error: (error, _) => Text('$error'),
+        loading: () => const Center(child: CircularProgressIndicator()),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: const FloatedCartWidget(),

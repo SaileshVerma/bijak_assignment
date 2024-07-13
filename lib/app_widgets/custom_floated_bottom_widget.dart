@@ -12,7 +12,7 @@ class FloatedCartWidget extends ConsumerWidget {
     final double width = MediaQuery.of(context).size.width;
     final cartNotifierProvider = ref.watch(cartProductsProvider);
 
-    return Visibility.maintain(
+    return Visibility(
       visible: cartNotifierProvider.isNotEmpty,
       child: FloatingActionButton.extended(
         backgroundColor: Colors.amber,
