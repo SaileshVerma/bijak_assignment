@@ -1,3 +1,4 @@
+import 'package:bijak_assignment/providers/cart_products.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -27,15 +28,21 @@ class SeasonalProductsList extends ConsumerWidget {
           data: (data) {
             final productList = data;
 
-            return ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: productList.length,
-              itemBuilder: (ctx, index) {
-                return SeasonalProductCard(
-                  product: productList[index],
-                );
-              },
+            return Padding(
+              padding: EdgeInsets.only(
+                bottom:
+                    ref.watch(cartProductsProvider).isNotEmpty ? 80.0 : 16.0,
+              ),
+              child: ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: productList.length,
+                itemBuilder: (ctx, index) {
+                  return SeasonalProductCard(
+                    product: productList[index],
+                  );
+                },
+              ),
             );
           },
           error: (error, _) => Text('$error'),
