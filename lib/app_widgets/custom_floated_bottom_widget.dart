@@ -1,6 +1,7 @@
-import 'package:bijak_assignment/providers/cart_products.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:bijak_assignment/app_widgets/cart_bottom_sheet.dart';
+import 'package:bijak_assignment/providers/cart_products.dart';
 
 class FloatedCartWidget extends ConsumerWidget {
   const FloatedCartWidget({
@@ -16,7 +17,19 @@ class FloatedCartWidget extends ConsumerWidget {
       visible: cartNotifierProvider.isNotEmpty,
       child: FloatingActionButton.extended(
         backgroundColor: Colors.amber,
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return BottomSheet(
+                onClosing: () {},
+                builder: (ctx) {
+                  return const CartItemsBottomSheet();
+                },
+              );
+            },
+          );
+        },
         label: SizedBox(
           width: width * 0.8,
           child: Column(
@@ -54,12 +67,27 @@ class FloatedCartWidget extends ConsumerWidget {
                       ),
                     ],
                   ),
-                  const Text(
-                    'View Cart >',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w600,
+                  InkWell(
+                    onTap: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) {
+                          return BottomSheet(
+                            onClosing: () {},
+                            builder: (ctx) {
+                              return const CartItemsBottomSheet();
+                            },
+                          );
+                        },
+                      );
+                    },
+                    child: const Text(
+                      'View Cart >',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   )
                 ],
