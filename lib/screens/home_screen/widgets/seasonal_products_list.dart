@@ -1,4 +1,4 @@
-import 'package:bijak_assignment/screens/home_screen/widgets/seasonal_product_card.dart';
+import 'package:bijak_assignment/screens/home_screen/widgets/seasonal_product_card_widgets/seasonal_product_card.dart';
 import 'package:flutter/material.dart';
 
 class SeasonalProductsList extends StatelessWidget {

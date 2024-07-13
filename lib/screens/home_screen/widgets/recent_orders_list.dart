@@ -1,4 +1,4 @@
-import 'package:bijak_assignment/screens/home_screen/widgets/recent_order_product_card.dart';
+import 'package:bijak_assignment/screens/home_screen/widgets/recent_product_card_widgets/recent_order_product_card.dart';
 import 'package:flutter/material.dart';
 
 class RecentOrdersList extends StatelessWidget {

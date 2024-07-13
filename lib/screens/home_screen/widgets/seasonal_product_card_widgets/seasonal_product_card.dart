@@ -1,3 +1,4 @@
+import 'package:bijak_assignment/screens/home_screen/widgets/seasonal_product_card_widgets/add_product_cart_action_button.dart';
 import 'package:bijak_assignment/utils/routes/routes_mapping.dart';
 import 'package:flutter/material.dart';
 
@@ -8,13 +9,13 @@ class SeasonalProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.pushNamed(context, Routes.product);
-      },
-      child: Card(
-        elevation: 3,
-        surfaceTintColor: Colors.white,
+    return Card(
+      elevation: 3,
+      surfaceTintColor: Colors.white,
+      child: InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, Routes.product);
+        },
         child: Stack(
           // alignment: Alignment.center,
           children: [
@@ -76,57 +77,11 @@ class SeasonalProductCard extends StatelessWidget {
             const Positioned(
               bottom: 0,
               right: 0,
-              child: AddToCartActionButton(),
+              child: SeasonalAddToCartActionButton(
+                toShowAddButton: false,
+              ),
             )
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class AddToCartActionButton extends StatelessWidget {
-  const AddToCartActionButton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 8.0, right: 8.0),
-      child: InkWell(
-        splashColor: Colors.green.shade100,
-        onTap: () {},
-        child: Ink(
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4.0),
-              border: Border.all(
-                color: Colors.green,
-                width: 1.2,
-              ),
-            ),
-            child: const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Text(
-                    'ADD TO CART ',
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green,
-                    ),
-                  ),
-                  Icon(
-                    Icons.shopping_cart_outlined,
-                    color: Colors.green,
-                    size: 18,
-                  )
-                ],
-              ),
-            ),
-          ),
         ),
       ),
     );

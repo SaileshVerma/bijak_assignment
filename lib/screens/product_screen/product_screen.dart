@@ -1,8 +1,9 @@
+import 'package:bijak_assignment/screens/home_screen/widgets/seasonal_product_card_widgets/add_product_cart_action_button.dart';
+import 'package:flutter/material.dart';
 import 'package:bijak_assignment/app_widgets/custom_floated_bottom_widget.dart';
 import 'package:bijak_assignment/screens/product_screen/widgets/product_details.dart';
 import 'package:bijak_assignment/screens/product_screen/widgets/product_image.dart';
-import 'package:flutter/material.dart';
-import 'package:bijak_assignment/screens/home_screen/widgets/seasonal_product_card.dart';
+import 'package:bijak_assignment/screens/home_screen/widgets/seasonal_product_card_widgets/seasonal_product_card.dart';
 
 class ProductScreen extends StatelessWidget {
   const ProductScreen({super.key});
@@ -14,6 +15,7 @@ class ProductScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Colors.green,
         title: const Text(
           'Product Name',
@@ -46,10 +48,12 @@ class ProductScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
+                  padding: EdgeInsets.only(left: 8.0),
                   child: ProductDetails(),
                 ),
-                AddToCartActionButton()
+                SeasonalAddToCartActionButton(
+                  toShowAddButton: false,
+                )
               ],
             ),
           ),
