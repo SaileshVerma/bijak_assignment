@@ -14,9 +14,13 @@ class AppRoutes {
         break;
 
       case (Routes.product):
-        final args = settings.arguments as String;
+        final args = settings.arguments as Map<String, String>;
+        final id = args['id'] ?? "";
+        final name = args['name'] ?? "";
+
         page = ProductScreen(
-          productId: args,
+          productId: id,
+          name: name,
         );
         break;
 
