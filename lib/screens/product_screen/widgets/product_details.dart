@@ -1,5 +1,6 @@
-import 'package:bijak_assignment/models/product.dart';
 import 'package:flutter/material.dart';
+
+import 'package:bijak_assignment/models/product.dart';
 
 class ProductDetails extends StatelessWidget {
   final Product product;

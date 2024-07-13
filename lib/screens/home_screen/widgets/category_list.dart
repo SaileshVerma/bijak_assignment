@@ -1,5 +1,6 @@
-import 'package:bijak_assignment/utils/constant/data_images.dart';
 import 'package:flutter/material.dart';
+
+import 'package:bijak_assignment/utils/constant/data_images.dart';
 
 class CategoryList extends StatelessWidget {
   const CategoryList({super.key});

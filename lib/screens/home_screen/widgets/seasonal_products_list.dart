@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:bijak_assignment/providers/products.dart';
 import 'package:bijak_assignment/screens/home_screen/widgets/seasonal_product_card_widgets/seasonal_product_card.dart';
 import 'package:bijak_assignment/screens/home_screen/widgets/seasonal_product_card_widgets/seasonal_product_shimmer_loader.dart';
-import 'package:bijak_assignment/utils/constant/sample_product_list_data.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SeasonalProductsList extends ConsumerWidget {
   const SeasonalProductsList({super.key});

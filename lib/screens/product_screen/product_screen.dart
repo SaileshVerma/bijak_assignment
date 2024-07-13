@@ -1,10 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:bijak_assignment/providers/product_details.dart';
 import 'package:bijak_assignment/screens/product_screen/widgets/add_product_action_button.dart';
-import 'package:flutter/material.dart';
 import 'package:bijak_assignment/app_widgets/custom_floated_bottom_widget.dart';
 import 'package:bijak_assignment/screens/product_screen/widgets/product_details.dart';
 import 'package:bijak_assignment/screens/product_screen/widgets/product_image.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProductScreen extends ConsumerWidget {
   final String productId;
@@ -73,9 +74,6 @@ class ProductScreen extends ConsumerWidget {
                     AddProductToCartActionButton(
                       productItem: productItem,
                     )
-                    // SeasonalAddToCartActionButton(
-                    //   toShowAddButton: false,
-                    // )
                   ],
                 ),
               ),

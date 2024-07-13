@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:bijak_assignment/models/product.dart';
 import 'package:bijak_assignment/screens/home_screen/widgets/recent_product_card_widgets/recent_order_add_cart_action_button.dart';
 import 'package:bijak_assignment/utils/routes/routes_mapping.dart';
-import 'package:flutter/material.dart';
 
 class RecentOrderProductCard extends StatelessWidget {
   final Product product;
@@ -64,7 +65,7 @@ class RecentOrderProductCard extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 4.0, left: 2.0),
                     child: Text(
                       product.weight,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 10,
                         color: Colors.grey,
                       ),

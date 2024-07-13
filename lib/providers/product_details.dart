@@ -9,8 +9,6 @@ class ProductDetailNotifier
     extends AutoDisposeFamilyAsyncNotifier<Product, String> {
   @override
   FutureOr<Product> build(String arg) {
-    // _productController = ProductController();
-
     return fetchProductDetails(arg);
   }
 

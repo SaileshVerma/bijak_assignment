@@ -1,6 +1,7 @@
-import 'package:bijak_assignment/utils/constant/carousel_banner_images.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+
+import 'package:bijak_assignment/utils/constant/carousel_banner_images.dart';
 
 class ScrollableImageBanner extends StatelessWidget {
   const ScrollableImageBanner({super.key});

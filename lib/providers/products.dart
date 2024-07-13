@@ -1,11 +1,11 @@
 import 'dart:async';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:bijak_assignment/controllers/products_controller.dart';
 import 'package:bijak_assignment/models/product.dart';
 import 'package:bijak_assignment/providers/cart_products.dart';
 import 'package:bijak_assignment/providers/product_details.dart';
 import 'package:bijak_assignment/providers/recently_orders.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProductsNotifier extends AsyncNotifier<List<Product>> {
   late ProductController _productController;

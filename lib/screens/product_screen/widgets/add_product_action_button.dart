@@ -1,7 +1,8 @@
-import 'package:bijak_assignment/models/product.dart';
-import 'package:bijak_assignment/providers/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:bijak_assignment/models/product.dart';
+import 'package:bijak_assignment/providers/product_details.dart';
 
 class AddProductToCartActionButton extends ConsumerWidget {
   final Product productItem;

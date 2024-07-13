@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:bijak_assignment/models/product.dart';
 import 'package:bijak_assignment/screens/home_screen/widgets/seasonal_product_card_widgets/add_product_cart_action_button.dart';
 import 'package:bijak_assignment/utils/routes/routes_mapping.dart';
-import 'package:flutter/material.dart';
 
 class SeasonalProductCard extends StatelessWidget {
   final Product product;
@@ -28,7 +29,6 @@ class SeasonalProductCard extends StatelessWidget {
           );
         },
         child: Stack(
-          // alignment: Alignment.center,
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,10 +52,10 @@ class SeasonalProductCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: 4.0, left: 2.0),
+                      padding: const EdgeInsets.only(top: 4.0, left: 2.0),
                       child: Text(
                         product.name,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 12,
                           color: Colors.black,
                         ),
@@ -65,17 +65,17 @@ class SeasonalProductCard extends StatelessWidget {
                       padding: EdgeInsets.only(top: 4.0, left: 2.0),
                       child: Text(
                         product.weight,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 10,
                           color: Colors.grey,
                         ),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 4.0, left: 2.0),
+                      padding: const EdgeInsets.only(top: 4.0, left: 2.0),
                       child: Text(
                         '${product.currencyUnit} ${product.price}',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 10,
                           color: Colors.grey,
                         ),
