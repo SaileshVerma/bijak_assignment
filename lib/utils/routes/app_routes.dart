@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:bijak_assignment/screens/product_screen/product_screen.dart';
 import 'package:bijak_assignment/screens/home_screen/home_screen.dart';
 import 'package:bijak_assignment/utils/routes/routes_mapping.dart';
+import 'package:page_transition/page_transition.dart';
 
 class AppRoutes {
   static Route onGenerateRoute(RouteSettings settings) {
@@ -20,10 +21,13 @@ class AppRoutes {
         page = const HomeScreen();
     }
 
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) {
-        return page;
-      },
+    return PageTransition(
+      type: PageTransitionType.rightToLeft,
+      child: page,
+      curve: Curves.easeInOut,
+      alignment: Alignment.center,
+      duration: const Duration(milliseconds: 300),
+      reverseDuration: const Duration(milliseconds: 300),
     );
   }
 }
