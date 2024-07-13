@@ -51,9 +51,9 @@ class ProductScreen extends StatelessWidget {
                   padding: EdgeInsets.only(left: 8.0),
                   child: ProductDetails(),
                 ),
-                SeasonalAddToCartActionButton(
-                  toShowAddButton: false,
-                )
+                // SeasonalAddToCartActionButton(
+                //   toShowAddButton: false,
+                // )
               ],
             ),
           ),

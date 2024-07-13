@@ -1,21 +1,28 @@
+import 'package:bijak_assignment/models/product.dart';
+import 'package:bijak_assignment/providers/products.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SeasonalAddToCartActionButton extends StatelessWidget {
-  final bool toShowAddButton;
+class SeasonalAddToCartActionButton extends ConsumerWidget {
+  final Product productItem;
 
   const SeasonalAddToCartActionButton({
-    required this.toShowAddButton,
+    required this.productItem,
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0, right: 8.0),
-      child: toShowAddButton
+      child: productItem.qty <= 0
           ? InkWell(
               splashColor: Colors.green.shade100,
-              onTap: () {},
+              onTap: () {
+                ref
+                    .read(productsProvider.notifier)
+                    .addProductToCart(product: productItem);
+              },
               child: Ink(
                 child: Container(
                   decoration: BoxDecoration(
@@ -51,19 +58,23 @@ class SeasonalAddToCartActionButton extends StatelessWidget {
           : Row(
               children: [
                 CustomActionTextButton(
-                  onTap: () {},
+                  onTap: () {
+                    ref.read(productsProvider.notifier).removeProductFromCart(
+                          product: productItem,
+                        );
+                  },
                   title: '-',
                 ),
                 Container(
                   color: Colors.green.shade700,
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
                       vertical: 4.0,
                       horizontal: 8.0,
                     ),
                     child: Text(
-                      '1',
-                      style: TextStyle(
+                      '${productItem.qty}',
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
                       ),
@@ -71,7 +82,11 @@ class SeasonalAddToCartActionButton extends StatelessWidget {
                   ),
                 ),
                 CustomActionTextButton(
-                  onTap: () {},
+                  onTap: () {
+                    ref.read(productsProvider.notifier).addProductToCart(
+                          product: productItem,
+                        );
+                  },
                   title: '+',
                 ),
               ],

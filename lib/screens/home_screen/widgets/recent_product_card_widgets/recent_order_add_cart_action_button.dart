@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:bijak_assignment/providers/recently_orders.dart';
+import 'package:bijak_assignment/models/product.dart';
 
-class AddProductActionButton extends StatelessWidget {
+class AddProductActionButton extends ConsumerWidget {
+  final Product productItem;
   final bool toShowAddButton;
 
   const AddProductActionButton({
+    required this.productItem,
     required this.toShowAddButton,
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return toShowAddButton
         ? InkWell(
             borderRadius: BorderRadius.circular(18.0),
             splashColor: Colors.green.shade100,
-            onTap: () {},
+            onTap: () {
+              ref
+                  .read(recentlyOrdersProvider.notifier)
+                  .addProductToCart(product: productItem);
+            },
             child: Ink(
               child: Container(
                 decoration: BoxDecoration(
@@ -40,26 +49,34 @@ class AddProductActionButton extends StatelessWidget {
         : Row(
             children: [
               CustomActionTextButton(
-                onTap: () {},
+                onTap: () {
+                  ref
+                      .read(recentlyOrdersProvider.notifier)
+                      .removeProductFromCart(product: productItem);
+                },
                 title: '-',
               ),
               Container(
                 color: Colors.green.shade700,
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
                     vertical: 2.0,
                     horizontal: 8.0,
                   ),
                   child: Text(
-                    '1',
-                    style: TextStyle(
+                    '${productItem.qty}',
+                    style: const TextStyle(
                       color: Colors.white,
                     ),
                   ),
                 ),
               ),
               CustomActionTextButton(
-                onTap: () {},
+                onTap: () {
+                  ref
+                      .read(recentlyOrdersProvider.notifier)
+                      .addProductToCart(product: productItem);
+                },
                 title: '+',
               ),
             ],

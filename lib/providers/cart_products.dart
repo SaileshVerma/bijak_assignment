@@ -33,8 +33,13 @@ class CartProductsNotifier extends StateNotifier<List<Product>> {
     final currentList = [...state];
 
     if (didProductAlreadyExists(productId: product.id)) {
-      //since the product] exists will add qty by +1;
+      //since the product] exists will add qty by -1;
       final previousQty = product.qty;
+      if (previousQty == 1) {
+        currentList.removeWhere((element) => element.id == product.id);
+        state = [...currentList];
+        return;
+      }
       final Product productItem = product.copyWith(
         qty: previousQty - 1,
       );

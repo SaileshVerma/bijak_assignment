@@ -78,11 +78,11 @@ class SeasonalProductCard extends StatelessWidget {
                 ),
               ],
             ),
-            const Positioned(
+            Positioned(
               bottom: 0,
               right: 0,
               child: SeasonalAddToCartActionButton(
-                toShowAddButton: false,
+                productItem: product,
               ),
             )
           ],

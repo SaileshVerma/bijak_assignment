@@ -67,7 +67,7 @@ class RecentOrderProductCard extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 4.0, left: 2.0),
                     child: Text(
                       '${product.currencyUnit} ${product.price}',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 10,
                         color: Colors.grey,
                       ),
@@ -75,12 +75,13 @@ class RecentOrderProductCard extends StatelessWidget {
                   ),
                 ],
               ),
-              const Align(
+              Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
-                  padding: EdgeInsets.only(bottom: 8.0),
+                  padding: const EdgeInsets.only(bottom: 8.0),
                   child: AddProductActionButton(
-                    toShowAddButton: false,
+                    productItem: product,
+                    toShowAddButton: product.qty <= 0,
                   ),
                 ),
               )

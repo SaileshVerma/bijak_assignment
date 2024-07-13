@@ -28,20 +28,21 @@ class RecentOrdersList extends ConsumerWidget {
           width: double.maxFinite,
           child: recentlyOrdersStateProvider.when(
             data: (data) {
+              final productItems = data;
               return ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: recentOrdersList.length,
+                  itemCount: productItems.length,
                   itemBuilder: (ctx, index) {
                     return Padding(
                       padding: const EdgeInsets.only(right: 6.0),
                       child: RecentOrderProductCard(
-                        product: recentOrdersList[index],
+                        product: productItems[index],
                       ),
                     );
                   });
             },
             error: (error, _) => Text('$error'),
-            loading: () => CircularProgressIndicator(),
+            loading: () => const CircularProgressIndicator(),
           ),
         )
       ],
