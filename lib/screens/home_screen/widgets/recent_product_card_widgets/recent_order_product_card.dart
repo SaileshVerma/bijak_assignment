@@ -1,9 +1,13 @@
+import 'package:bijak_assignment/models/product.dart';
 import 'package:bijak_assignment/screens/home_screen/widgets/recent_product_card_widgets/recent_order_add_cart_action_button.dart';
 import 'package:bijak_assignment/utils/routes/routes_mapping.dart';
 import 'package:flutter/material.dart';
 
 class RecentOrderProductCard extends StatelessWidget {
+  final Product product;
+
   const RecentOrderProductCard({
+    required this.product,
     super.key,
   });
 
@@ -34,35 +38,35 @@ class RecentOrderProductCard extends StatelessWidget {
                         topRight: Radius.circular(8.0),
                       ),
                       child: Image.network(
-                        "https://d1hm90tax3m3th.cloudfront.net/web/vegetables.jpg",
+                        product.imageUrl,
                         fit: BoxFit.fill,
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 4.0, left: 2.0),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4.0, left: 2.0),
                     child: Text(
-                      'Mango',
+                      product.name,
                       style: TextStyle(
                         fontSize: 12,
                         color: Colors.black,
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 4.0, left: 2.0),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4.0, left: 2.0),
                     child: Text(
-                      '2- 4 kg',
+                      product.weight,
                       style: TextStyle(
                         fontSize: 10,
                         color: Colors.grey,
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 4.0, left: 2.0),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4.0, left: 2.0),
                     child: Text(
-                      'Rs 200',
+                      '${product.currencyUnit} ${product.price}',
                       style: TextStyle(
                         fontSize: 10,
                         color: Colors.grey,

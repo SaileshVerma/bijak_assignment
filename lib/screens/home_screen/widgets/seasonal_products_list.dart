@@ -1,11 +1,16 @@
+import 'package:bijak_assignment/providers/products.dart';
 import 'package:bijak_assignment/screens/home_screen/widgets/seasonal_product_card_widgets/seasonal_product_card.dart';
+import 'package:bijak_assignment/utils/constant/sample_product_list_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SeasonalProductsList extends StatelessWidget {
+class SeasonalProductsList extends ConsumerWidget {
   const SeasonalProductsList({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final productsStateProvider = ref.watch(productsProvider);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -17,13 +22,23 @@ class SeasonalProductsList extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        ListView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: 5,
-          itemBuilder: (ctx, index) {
-            return const SeasonalProductCard();
+        productsStateProvider.when(
+          data: (data) {
+            final productList = data;
+
+            return ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: productList.length,
+              itemBuilder: (ctx, index) {
+                return SeasonalProductCard(
+                  product: productList[index],
+                );
+              },
+            );
           },
+          error: (error, _) => Text('$error'),
+          loading: () => const CircularProgressIndicator(),
         )
       ],
     );
